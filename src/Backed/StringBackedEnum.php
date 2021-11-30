@@ -4,10 +4,7 @@ namespace FluxLegacyEnum\Backed;
 
 use FluxLegacyEnum\Unit\UnitEnum;
 
-/**
- * @property-read string $value
- */
-interface StringBackedEnum extends UnitEnum
+interface StringBackedEnum extends UnitEnum, StringBackedEnumValue
 {
 
     /**

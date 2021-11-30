@@ -2,10 +2,7 @@
 
 namespace FluxLegacyEnum\Unit;
 
-/**
- * @property-read string $name
- */
-interface UnitEnum
+interface UnitEnum extends UnitEnumName
 {
 
     /**

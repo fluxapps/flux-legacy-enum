@@ -27,7 +27,9 @@ enum Enum1
     case B;
     case C;
 }
+```
 
+```php
 Enum1::A->name === "A";
 Enum1::A instanceof Enum1;
 Enum1::A === Enum1::A;
@@ -49,7 +51,9 @@ class Enum1 extends LegacyUnitEnum
 {
 
 }
+```
 
+```php
 Enum1::A()->name === "A";
 Enum1::A() instanceof Enum1;
 Enum1::A() === Enum1::A();
@@ -70,7 +74,9 @@ enum Enum2: string
     case NAME_2 = "value_2";
     case NAME_3 = "value_3";
 }
+```
 
+```php
 Enum2::NAME_1->name === "NAME_1";
 Enum2::NAME_1->value === "value_1";
 Enum2::NAME_1 instanceof Enum2;
@@ -100,7 +106,9 @@ class Enum2 extends LegacyStringBackedEnum
 {
 
 }
+```
 
+```php
 Enum2::NAME_1()->name === "NAME_1";
 Enum2::NAME_1()->value === "value_1";
 Enum2::NAME_1() instanceof Enum2;
@@ -129,7 +137,9 @@ enum Enum3: int
     case TWO = 2;
     case THREE = 3;
 }
+```
 
+```php
 Enum3::ONE->name === "ONE";
 Enum3::ONE->value === 1;
 Enum3::ONE instanceof Enum3;
@@ -159,7 +169,9 @@ class Enum3 extends LegacyIntBackedEnum
 {
 
 }
+```
 
+```php
 Enum3::ONE()->name === "ONE";
 Enum3::ONE()->value === 1;
 Enum3::ONE() instanceof Enum3;
@@ -175,4 +187,44 @@ Enum3::from(3) === Enum3::THREE();
 
 try { Enum3::FOUR(); } catch (Throwable $ex) { }
 try { Enum3::from(4); } catch (Throwable $ex) { }
+```
+
+### Mix
+
+```php
+interface Enum4 extends StringBackedEnumValue
+{
+
+}
+```
+
+```php
+enum NativeEnum4: string implements Enum4
+{
+    case A = "a";
+    case B = "b";
+    case C = "c";
+}
+```
+
+```php
+/**
+ * @method static static A() a
+ * @method static static B() b
+ * @method static static C() c
+ */
+class LegacyEnum4 extends LegacyStringBackedEnum implements Enum4
+{
+
+}
+```
+
+```php
+function abc(Enum4 $enum4) : void
+{
+    $enum4->value === "a";
+}
+
+abc(NativeEnum4::A);
+abc(LegacyEnum4::A());
 ```
