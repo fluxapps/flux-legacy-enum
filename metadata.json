@@ -1,0 +1,12 @@
+{
+  "description": "PHP 8.1 like legacy enum (Experimental Alpha Version)",
+  "topics": [
+    "alpha",
+    "enum",
+    "experimental",
+    "legacy",
+    "library",
+    "php"
+  ],
+  "homepage": "https://github.com/fluxapps/flux-legacy-enum"
+}
