@@ -25,6 +25,9 @@ abstract class LegacyStringBackedEnum implements StringBackedEnum, JsonSerializa
     }
 
 
+    /**
+     * @return static[]
+     */
     public static final function cases() : array
     {
         return LegacyEnumUtils::cases(
@@ -42,6 +45,9 @@ abstract class LegacyStringBackedEnum implements StringBackedEnum, JsonSerializa
     }
 
 
+    /**
+     * @return static
+     */
     public static final function from(string $value)/* : static*/ : self
     {
         return LegacyEnumUtils::fromValue(
@@ -52,6 +58,9 @@ abstract class LegacyStringBackedEnum implements StringBackedEnum, JsonSerializa
     }
 
 
+    /**
+     * @return ?static
+     */
     public static final function tryFrom(string $value)/* : ?static*/ : ?self
     {
         return LegacyEnumUtils::tryFromValue(

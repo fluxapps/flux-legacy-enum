@@ -23,6 +23,9 @@ abstract class LegacyUnitEnum implements UnitEnum
     }
 
 
+    /**
+     * @return static[]
+     */
     public static final function cases() : array
     {
         return LegacyEnumUtils::cases(
