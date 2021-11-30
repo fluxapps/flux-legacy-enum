@@ -7,6 +7,9 @@ use LogicException;
 trait LegacyEnumCallStatic
 {
 
+    /**
+     * @return static
+     */
     public static final function __callStatic(string $key, array $arguments)/* : static*/ : self
     {
         if (!empty($arguments)) {
