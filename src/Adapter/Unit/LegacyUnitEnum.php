@@ -1,19 +1,21 @@
 <?php
 
-namespace FluxLegacyEnum\Enum\Unit;
+namespace FluxLegacyEnum\Adapter\Unit;
 
-use FluxLegacyEnum\Enum\LegacyEnumCallStatic;
-use FluxLegacyEnum\Enum\LegacyEnumName;
-use FluxLegacyEnum\Enum\LegacyEnumToString;
-use FluxLegacyEnum\Enum\LegacyEnumUtils;
+use FluxLegacyEnum\Adapter\_Internal\LegacyEnumCallStatic;
+use FluxLegacyEnum\Adapter\_Internal\LegacyEnumToString;
+use FluxLegacyEnum\Adapter\_Internal\LegacyEnumUtils;
+use FluxLegacyEnum\Unit\UnitEnum;
 use LogicException;
 
-abstract class LegacyUnitEnum
+abstract class LegacyUnitEnum implements UnitEnum
 {
 
     use LegacyEnumCallStatic;
-    use LegacyEnumName;
     use LegacyEnumToString;
+
+    private string $_name;
+
 
     private function __construct()
     {
@@ -21,7 +23,6 @@ abstract class LegacyUnitEnum
     }
 
 
-    /** @return static[] */
     public static final function cases() : array
     {
         return LegacyEnumUtils::cases(

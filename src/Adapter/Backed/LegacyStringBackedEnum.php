@@ -1,25 +1,22 @@
 <?php
 
-namespace FluxLegacyEnum\Enum\Backed;
+namespace FluxLegacyEnum\Adapter\Backed;
 
-use FluxLegacyEnum\Enum\LegacyEnumCallStatic;
-use FluxLegacyEnum\Enum\LegacyEnumName;
-use FluxLegacyEnum\Enum\LegacyEnumToString;
-use FluxLegacyEnum\Enum\LegacyEnumUtils;
+use FluxLegacyEnum\Adapter\_Internal\LegacyEnumCallStatic;
+use FluxLegacyEnum\Adapter\_Internal\LegacyEnumToString;
+use FluxLegacyEnum\Adapter\_Internal\LegacyEnumUtils;
+use FluxLegacyEnum\Backed\StringBackedEnum;
 use JsonSerializable;
 use LogicException;
 
-/**
- * @property-read int $value
- */
-abstract class LegacyIntBackedEnum implements JsonSerializable
+abstract class LegacyStringBackedEnum implements StringBackedEnum, JsonSerializable
 {
 
     use LegacyEnumCallStatic;
-    use LegacyEnumName;
     use LegacyEnumToString;
 
-    private int $_value;
+    private string $_name;
+    private string $_value;
 
 
     private function __construct()
@@ -28,12 +25,11 @@ abstract class LegacyIntBackedEnum implements JsonSerializable
     }
 
 
-    /** @return static[] */
     public static final function cases() : array
     {
         return LegacyEnumUtils::cases(
             static::class,
-            function (string $name, int $value)/* : static*/ : self {
+            function (string $name, string $value)/* : static*/ : self {
                 $case = new static();
 
                 $case->_name = $name;
@@ -41,14 +37,12 @@ abstract class LegacyIntBackedEnum implements JsonSerializable
 
                 return $case;
             },
-            true,
             true
         );
     }
 
 
-    /** @return static */
-    public static final function from(int $value)/* : static*/ : self
+    public static final function from(string $value)/* : static*/ : self
     {
         return LegacyEnumUtils::fromValue(
             static::cases(),
@@ -58,8 +52,7 @@ abstract class LegacyIntBackedEnum implements JsonSerializable
     }
 
 
-    /** @return ?static */
-    public static final function tryFrom(int $value)/* : ?static*/ : ?self
+    public static final function tryFrom(string $value)/* : ?static*/ : ?self
     {
         return LegacyEnumUtils::tryFromValue(
             static::cases(),
@@ -77,7 +70,7 @@ abstract class LegacyIntBackedEnum implements JsonSerializable
     }
 
 
-    public final function __get(string $key)/* : mixed*/
+    public final function __get(string $key) : string
     {
         switch ($key) {
             case "name":
@@ -98,7 +91,7 @@ abstract class LegacyIntBackedEnum implements JsonSerializable
     }
 
 
-    public function jsonSerialize() : int
+    public function jsonSerialize() : string
     {
         return $this->value;
     }
