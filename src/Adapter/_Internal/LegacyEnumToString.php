@@ -1,6 +1,6 @@
 <?php
 
-namespace FluxLegacyEnum\Enum;
+namespace FluxLegacyEnum\Adapter\_Internal;
 
 trait LegacyEnumToString
 {
