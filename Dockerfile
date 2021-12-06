@@ -1,11 +1,11 @@
 ARG ALPINE_IMAGE=alpine:latest
-ARG AUTOLOAD_API_IMAGE=docker-registry.fluxpublisher.ch/flux-autoload/api:latest
+ARG FLUX_AUTOLOAD_API_IMAGE=docker-registry.fluxpublisher.ch/flux-autoload/api:latest
 
-FROM $AUTOLOAD_API_IMAGE AS autoload_api
+FROM $FLUX_AUTOLOAD_API_IMAGE AS flux_autoload_api
 
 FROM $ALPINE_IMAGE AS build
 
-COPY --from=autoload_api /flux-autoload-api /flux-legacy-enum/libs/flux-autoload-api
+COPY --from=flux_autoload_api /flux-autoload-api /flux-legacy-enum/libs/flux-autoload-api
 COPY . /flux-legacy-enum
 
 FROM scratch
