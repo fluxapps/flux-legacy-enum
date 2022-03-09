@@ -19,9 +19,12 @@ abstract class LegacyStringBackedEnum implements StringBackedEnum, JsonSerializa
     private string $_value;
 
 
-    private function __construct()
-    {
-
+    private function __construct(
+        /*public readonly*/ string $name,
+        /*public readonly*/ string $value
+    ) {
+        $this->_name = $name;
+        $this->_value = $value;
     }
 
 
@@ -33,12 +36,10 @@ abstract class LegacyStringBackedEnum implements StringBackedEnum, JsonSerializa
         return LegacyEnumUtils::cases(
             static::class,
             function (string $name, string $value)/* : static*/ : self {
-                $case = new static();
-
-                $case->_name = $name;
-                $case->_value = $value;
-
-                return $case;
+                return static::new(
+                    $name,
+                    $value
+                );
             },
             true
         );
@@ -65,6 +66,18 @@ abstract class LegacyStringBackedEnum implements StringBackedEnum, JsonSerializa
     {
         return LegacyEnumUtils::tryFromValue(
             static::cases(),
+            $value
+        );
+    }
+
+
+    private static function new(
+        string $name,
+        string $value
+    ) : /*static*/ self
+    {
+        return new static(
+            $name,
             $value
         );
     }
