@@ -17,9 +17,10 @@ abstract class LegacyUnitEnum implements UnitEnum
     private string $_name;
 
 
-    private function __construct()
-    {
-
+    private function __construct(
+        /*public readonly*/ string $name
+    ) {
+        $this->_name = $name;
     }
 
 
@@ -31,12 +32,20 @@ abstract class LegacyUnitEnum implements UnitEnum
         return LegacyEnumUtils::cases(
             static::class,
             function (string $name)/* : static*/ : self {
-                $case = new static();
-
-                $case->_name = $name;
-
-                return $case;
+                return static::new(
+                    $name
+                );
             }
+        );
+    }
+
+
+    private static function new(
+        string $name
+    ) : /*static*/ self
+    {
+        return new static(
+            $name
         );
     }
 
