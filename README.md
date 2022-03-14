@@ -2,19 +2,19 @@
 
 PHP 8.1 like legacy enum
 
-Experimental Alpha Version
-
 ## Installation
 
 ```dockerfile
 COPY --from=docker-registry.fluxpublisher.ch/flux-enum/legacy:latest /flux-legacy-enum /%path%/libs/flux-legacy-enum
 ```
 
+## Usage
+
 ```php
 require_once __DIR__ . "/%path%/libs/flux-legacy-enum/autoload.php";
 ```
 
-## Examples
+## Example
 
 ### Unit
 

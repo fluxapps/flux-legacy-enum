@@ -1,9 +1,7 @@
 {
-    "description": "PHP 8.1 like legacy enum (Experimental Alpha Version)",
+    "description": "PHP 8.1 like legacy enum",
     "topics": [
-        "alpha",
         "enum",
-        "experimental",
         "legacy",
         "library",
         "php"
