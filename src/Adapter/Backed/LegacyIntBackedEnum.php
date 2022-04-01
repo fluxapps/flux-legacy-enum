@@ -61,7 +61,7 @@ abstract class LegacyIntBackedEnum implements IntBackedEnum, JsonSerializable
 
 
     /**
-     * @return ?static
+     * @return static|null
      */
     public static final function tryFrom(int $value)/* : ?static*/ : ?self
     {

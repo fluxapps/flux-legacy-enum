@@ -8,11 +8,12 @@ use ValueError;
 final class LegacyEnumUtils
 {
 
-    private static array $cases = [];
+    private static array $cases;
 
 
     public static final function cases(string $class, callable $constructor, bool $values = false, bool $integers = false) : array
     {
+        static::$cases ??= [];
         $cases = static::$cases[$class] ?? null;
 
         if ($cases === null) {
