@@ -14,7 +14,7 @@ interface IntBackedEnum extends UnitEnum, IntBackedEnumValue
 
 
     /**
-     * @return ?static
+     * @return static|null
      */
     public static function tryFrom(int $value)/* : ?static*/ : ?self;
 }

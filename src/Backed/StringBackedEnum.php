@@ -14,7 +14,7 @@ interface StringBackedEnum extends UnitEnum, StringBackedEnumValue
 
 
     /**
-     * @return ?static
+     * @return static|null
      */
     public static function tryFrom(string $value)/* : ?static*/ : ?self;
 }

@@ -60,7 +60,7 @@ abstract class LegacyStringBackedEnum implements StringBackedEnum, JsonSerializa
 
 
     /**
-     * @return ?static
+     * @return static|null
      */
     public static final function tryFrom(string $value)/* : ?static*/ : ?self
     {
