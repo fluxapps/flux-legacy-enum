@@ -10,7 +10,7 @@ trait LegacyEnumCallStatic
     /**
      * @return static
      */
-    public static final function __callStatic(string $key, array $arguments)/* : static*/ : self
+    public static final function __callStatic(string $key, array $arguments) : static
     {
         if (!empty($arguments)) {
             throw new LogicException("Can't call with arguments");

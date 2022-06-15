@@ -35,7 +35,7 @@ abstract class LegacyIntBackedEnum implements IntBackedEnum, JsonSerializable
     {
         return LegacyEnumUtils::cases(
             static::class,
-            function (string $name, int $value)/* : static*/ : self {
+            function (string $name, int $value) : static {
                 return static::new(
                     $name,
                     $value
@@ -50,7 +50,7 @@ abstract class LegacyIntBackedEnum implements IntBackedEnum, JsonSerializable
     /**
      * @return static
      */
-    public static final function from(int $value)/* : static*/ : self
+    public static final function from(int $value) : static
     {
         return LegacyEnumUtils::fromValue(
             static::cases(),
@@ -63,7 +63,7 @@ abstract class LegacyIntBackedEnum implements IntBackedEnum, JsonSerializable
     /**
      * @return static|null
      */
-    public static final function tryFrom(int $value)/* : ?static*/ : ?self
+    public static final function tryFrom(int $value) : ?static
     {
         return LegacyEnumUtils::tryFromValue(
             static::cases(),
@@ -75,8 +75,7 @@ abstract class LegacyIntBackedEnum implements IntBackedEnum, JsonSerializable
     private static function new(
         string $name,
         int $value
-    ) : /*static*/ self
-    {
+    ) : static {
         return new static(
             $name,
             $value
