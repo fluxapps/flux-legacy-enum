@@ -31,7 +31,7 @@ abstract class LegacyUnitEnum implements UnitEnum
     {
         return LegacyEnumUtils::cases(
             static::class,
-            function (string $name)/* : static*/ : self {
+            function (string $name) : static {
                 return static::new(
                     $name
                 );
@@ -42,8 +42,7 @@ abstract class LegacyUnitEnum implements UnitEnum
 
     private static function new(
         string $name
-    ) : /*static*/ self
-    {
+    ) : static {
         return new static(
             $name
         );
