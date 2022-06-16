@@ -14,13 +14,10 @@ abstract class LegacyUnitEnum implements UnitEnum
     use LegacyEnumCallStatic;
     use LegacyEnumToString;
 
-    private string $_name;
-
-
     private function __construct(
-        /*public readonly*/ string $name
+        private readonly string $_name
     ) {
-        $this->_name = $name;
+
     }
 
 
