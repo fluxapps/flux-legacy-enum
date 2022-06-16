@@ -8,9 +8,15 @@ use ValueError;
 final class LegacyEnumUtils
 {
 
+    /**
+     * @var object[]
+     */
     private static array $cases;
 
 
+    /**
+     * @return object[]
+     */
     public static final function cases(string $class, callable $constructor, bool $values = false, bool $integers = false) : array
     {
         static::$cases ??= [];
@@ -73,6 +79,9 @@ final class LegacyEnumUtils
     }
 
 
+    /**
+     * @param object[] $cases
+     */
     public static final function fromName(array $cases, string $name, string $class) : object
     {
         $case = static::tryFromName(
@@ -93,7 +102,10 @@ final class LegacyEnumUtils
     }
 
 
-    public static final function fromValue(array $cases, mixed $value, string $class) : object
+    /**
+     * @param object[] $cases
+     */
+    public static final function fromValue(array $cases, /*string|int*/ $value, string $class) : object
     {
         $case = static::tryFromValue(
             $cases,
@@ -116,6 +128,9 @@ final class LegacyEnumUtils
     }
 
 
+    /**
+     * @param object[] $cases
+     */
     public static final function tryFromName(array $cases, string $name) : ?object
     {
         foreach ($cases as $case) {
@@ -128,7 +143,10 @@ final class LegacyEnumUtils
     }
 
 
-    public static final function tryFromValue(array $cases, mixed $value) : ?object
+    /**
+     * @param object[] $cases
+     */
+    public static final function tryFromValue(array $cases, /*string|int*/ $value) : ?object
     {
         foreach ($cases as $case) {
             if ($case->value === $value) {
