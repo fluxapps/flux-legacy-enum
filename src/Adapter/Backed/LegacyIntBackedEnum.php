@@ -86,7 +86,7 @@ abstract class LegacyIntBackedEnum implements IntBackedEnum, JsonSerializable
     }
 
 
-    public final function __get(string $key)/* : mixed*/
+    public final function __get(string $key)/* : string|int*/
     {
         switch ($key) {
             case "name":
@@ -101,7 +101,7 @@ abstract class LegacyIntBackedEnum implements IntBackedEnum, JsonSerializable
     }
 
 
-    public final function __set(string $key, /*mixed*/ $value) : void
+    public final function __set(string $key, mixed $value) : void
     {
         throw new LogicException("Can't set");
     }
