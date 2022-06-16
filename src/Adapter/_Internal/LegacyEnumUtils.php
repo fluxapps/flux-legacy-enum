@@ -73,7 +73,7 @@ final class LegacyEnumUtils
     }
 
 
-    public static final function fromName(array $cases, string $name, string $class)/* : mixed*/
+    public static final function fromName(array $cases, string $name, string $class) : object
     {
         $case = static::tryFromName(
             $cases,
@@ -93,7 +93,7 @@ final class LegacyEnumUtils
     }
 
 
-    public static final function fromValue(array $cases, /*mixed*/ $value, string $class)/* : mixed*/
+    public static final function fromValue(array $cases, mixed $value, string $class) : object
     {
         $case = static::tryFromValue(
             $cases,
@@ -116,7 +116,7 @@ final class LegacyEnumUtils
     }
 
 
-    public static final function tryFromName(array $cases, string $name)/* : mixed*/
+    public static final function tryFromName(array $cases, string $name) : ?object
     {
         foreach ($cases as $case) {
             if ($case->name === $name) {
@@ -128,7 +128,7 @@ final class LegacyEnumUtils
     }
 
 
-    public static final function tryFromValue(array $cases, /*mixed*/ $value)/* : mixed*/
+    public static final function tryFromValue(array $cases, mixed $value) : ?object
     {
         foreach ($cases as $case) {
             if ($case->value === $value) {
