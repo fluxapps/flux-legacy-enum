@@ -15,16 +15,11 @@ abstract class LegacyStringBackedEnum implements StringBackedEnum, JsonSerializa
     use LegacyEnumCallStatic;
     use LegacyEnumToString;
 
-    private string $_name;
-    private string $_value;
-
-
     private function __construct(
-        /*public readonly*/ string $name,
-        /*public readonly*/ string $value
+        private readonly string $_name,
+        private readonly string $_value
     ) {
-        $this->_name = $name;
-        $this->_value = $value;
+
     }
 
 
