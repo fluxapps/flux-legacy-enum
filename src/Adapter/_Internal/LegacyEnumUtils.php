@@ -105,7 +105,7 @@ final class LegacyEnumUtils
     /**
      * @param object[] $cases
      */
-    public static final function fromValue(array $cases, /*string|int*/ $value, string $class) : object
+    public static final function fromValue(array $cases, string|int $value, string $class) : object
     {
         $case = static::tryFromValue(
             $cases,
@@ -146,7 +146,7 @@ final class LegacyEnumUtils
     /**
      * @param object[] $cases
      */
-    public static final function tryFromValue(array $cases, /*string|int*/ $value) : ?object
+    public static final function tryFromValue(array $cases, string|int $value) : ?object
     {
         foreach ($cases as $case) {
             if ($case->value === $value) {

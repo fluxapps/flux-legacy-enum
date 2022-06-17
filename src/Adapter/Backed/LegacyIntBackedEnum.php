@@ -81,7 +81,7 @@ abstract class LegacyIntBackedEnum implements IntBackedEnum, JsonSerializable
     }
 
 
-    public final function __get(string $key)/* : string|int*/
+    public final function __get(string $key) : string|int
     {
         switch ($key) {
             case "name":
