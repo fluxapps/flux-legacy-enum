@@ -10,15 +10,17 @@ RUN change-namespace /code/flux-autoload-api FluxAutoloadApi FluxLegacyEnum\\Lib
 
 FROM alpine:latest AS build
 
-COPY --from=build_namespaces /code/flux-autoload-api /flux-legacy-enum/libs/flux-autoload-api
-COPY . /flux-legacy-enum
+COPY --from=build_namespaces /code/flux-autoload-api /build/flux-legacy-enum/libs/flux-autoload-api
+COPY . /build/flux-legacy-enum
+
+RUN (cd /build && tar -czf flux-legacy-enum.tar.gz flux-legacy-enum)
 
 FROM scratch
 
 LABEL org.opencontainers.image.source="https://github.com/flux-eco/flux-legacy-enum"
 LABEL maintainer="fluxlabs <support@fluxlabs.ch> (https://fluxlabs.ch)"
 
-COPY --from=build /flux-legacy-enum /flux-legacy-enum
+COPY --from=build /build /
 
 ARG COMMIT_SHA
 LABEL org.opencontainers.image.revision="$COMMIT_SHA"
