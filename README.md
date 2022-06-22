@@ -4,14 +4,56 @@ PHP 8.1 like legacy enum
 
 ## Installation
 
+### Non-Composer
+
 ```dockerfile
-COPY --from=docker-registry.fluxpublisher.ch/flux-enum/legacy:latest /flux-legacy-enum /%path%/libs/flux-legacy-enum
+COPY --from=docker-registry.fluxpublisher.ch/flux-enum/legacy:%tag% /flux-legacy-enum /%path%/libs/flux-legacy-enum
 ```
 
-## Usage
+or
+
+```dockerfile
+RUN (mkdir -p /%path%/libs/flux-legacy-enum && cd /%path%/libs/flux-legacy-enum && wget -O - https://docker-registry.fluxpublisher.ch/api/get-build-archive/flux-enum/legacy.tar.gz?tag=%tag% | tar -xz --strip-components=1)
+```
+
+or
+
+Download https://docker-registry.fluxpublisher.ch/api/get-build-archive/flux-enum/legacy.tar.gz?tag=%tag% and extract it to `/%path%/libs/flux-legacy-enum`
+
+If you `wget` use `--content-disposition` to get the correct file name
+
+#### Usage
 
 ```php
 require_once __DIR__ . "/%path%/libs/flux-legacy-enum/autoload.php";
+```
+
+### Composer
+
+```json
+{
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "flux/legacy-enum",
+                "version": "%tag%",
+                "dist": {
+                    "url": "https://docker-registry.fluxpublisher.ch/api/get-build-archive/flux-enum/legacy.tar.gz?tag=%tag%",
+                    "type": "tar"
+                },
+                "autoload": {
+                    "files": [
+                        "autoload.php"
+                    ]
+                }
+            }
+        }
+    ],
+    "require": {
+        "flux/legacy-enum": "*"
+    }
+}
 ```
 
 ## Example
