@@ -20,7 +20,7 @@ or
 
 Download https://docker-registry.fluxpublisher.ch/api/get-build-archive/flux-enum/legacy.tar.gz?tag=%tag% and extract it to `/%path%/libs/flux-legacy-enum`
 
-If you `wget` use `--content-disposition` to get the correct file name
+Hint: If you use `wget` without pipe use `--content-disposition` to get the correct file name
 
 #### Usage
 
