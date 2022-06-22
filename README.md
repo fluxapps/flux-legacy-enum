@@ -4,6 +4,8 @@ PHP 8.1 like legacy enum
 
 ## Installation
 
+Hint: Use `latest` as `%tag%` (or omit it) for get the latest build
+
 ### Non-Composer
 
 ```dockerfile
