@@ -36,7 +36,7 @@ require_once __DIR__ . "/%path%/libs/flux-legacy-enum/autoload.php";
         {
             "type": "package",
             "package": {
-                "name": "flux/legacy-enum",
+                "name": "flux/flux-legacy-enum",
                 "version": "%tag%",
                 "dist": {
                     "url": "https://docker-registry.fluxpublisher.ch/api/get-build-archive/flux-enum/legacy.tar.gz?tag=%tag%",
@@ -51,7 +51,7 @@ require_once __DIR__ . "/%path%/libs/flux-legacy-enum/autoload.php";
         }
     ],
     "require": {
-        "flux/legacy-enum": "*"
+        "flux/flux-legacy-enum": "*"
     }
 }
 ```
