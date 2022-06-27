@@ -7,7 +7,6 @@ use FluxLegacyEnum\Adapter\_Internal\LegacyEnumToString;
 use FluxLegacyEnum\Adapter\_Internal\LegacyEnumUtils;
 use FluxLegacyEnum\Backed\IntBackedEnum;
 use JsonSerializable;
-use LogicException;
 
 abstract class LegacyIntBackedEnum implements IntBackedEnum, JsonSerializable
 {
@@ -16,8 +15,8 @@ abstract class LegacyIntBackedEnum implements IntBackedEnum, JsonSerializable
     use LegacyEnumToString;
 
     private function __construct(
-        private readonly string $_name,
-        private readonly int $_value
+        public readonly string $name,
+        public readonly int $value
     ) {
 
     }
@@ -72,44 +71,8 @@ abstract class LegacyIntBackedEnum implements IntBackedEnum, JsonSerializable
     }
 
 
-    public final function __debugInfo() : ?array
-    {
-        return [
-            "name"  => $this->name,
-            "value" => $this->value
-        ];
-    }
-
-
-    public final function __get(string $key) : string|int
-    {
-        switch ($key) {
-            case "name":
-                return $this->_name;
-
-            case "value":
-                return $this->_value;
-
-            default:
-                throw new LogicException("Can't get " . $key);
-        }
-    }
-
-
-    public final function __set(string $key, mixed $value) : void
-    {
-        throw new LogicException("Can't set");
-    }
-
-
     public function jsonSerialize() : int
     {
         return $this->value;
-    }
-
-
-    private function __clone()
-    {
-        throw new LogicException("Can't clone");
     }
 }
