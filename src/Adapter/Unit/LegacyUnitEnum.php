@@ -6,7 +6,6 @@ use FluxLegacyEnum\Adapter\_Internal\LegacyEnumCallStatic;
 use FluxLegacyEnum\Adapter\_Internal\LegacyEnumToString;
 use FluxLegacyEnum\Adapter\_Internal\LegacyEnumUtils;
 use FluxLegacyEnum\Unit\UnitEnum;
-use LogicException;
 
 abstract class LegacyUnitEnum implements UnitEnum
 {
@@ -15,7 +14,7 @@ abstract class LegacyUnitEnum implements UnitEnum
     use LegacyEnumToString;
 
     private function __construct(
-        private readonly string $_name
+        public readonly string $name
     ) {
 
     }
@@ -43,37 +42,5 @@ abstract class LegacyUnitEnum implements UnitEnum
         return new static(
             $name
         );
-    }
-
-
-    public final function __debugInfo() : ?array
-    {
-        return [
-            "name" => $this->name
-        ];
-    }
-
-
-    public final function __get(string $key) : string
-    {
-        switch ($key) {
-            case "name":
-                return $this->_name;
-
-            default:
-                throw new LogicException("Can't get " . $key);
-        }
-    }
-
-
-    public final function __set(string $key, mixed $value) : void
-    {
-        throw new LogicException("Can't set");
-    }
-
-
-    private function __clone()
-    {
-        throw new LogicException("Can't clone");
     }
 }
