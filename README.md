@@ -9,18 +9,18 @@ Hint: Use `latest` as `%tag%` (or omit it) for get the latest build
 ### Non-Composer
 
 ```dockerfile
-COPY --from=docker-registry.fluxpublisher.ch/flux-enum/legacy:%tag% /flux-legacy-enum /%path%/libs/flux-legacy-enum
+COPY --from=docker-registry.fluxpublisher.ch/flux-legacy-enum:%tag% /flux-legacy-enum /%path%/libs/flux-legacy-enum
 ```
 
 or
 
 ```dockerfile
-RUN (mkdir -p /%path%/libs/flux-legacy-enum && cd /%path%/libs/flux-legacy-enum && wget -O - https://docker-registry.fluxpublisher.ch/api/get-build-archive/flux-enum/legacy.tar.gz?tag=%tag% | tar -xz --strip-components=1)
+RUN (mkdir -p /%path%/libs/flux-legacy-enum && cd /%path%/libs/flux-legacy-enum && wget -O - https://docker-registry.fluxpublisher.ch/api/get-build-archive/flux-legacy-enum.tar.gz?tag=%tag% | tar -xz --strip-components=1)
 ```
 
 or
 
-Download https://docker-registry.fluxpublisher.ch/api/get-build-archive/flux-enum/legacy.tar.gz?tag=%tag% and extract it to `/%path%/libs/flux-legacy-enum`
+Download https://docker-registry.fluxpublisher.ch/api/get-build-archive/flux-legacy-enum.tar.gz?tag=%tag% and extract it to `/%path%/libs/flux-legacy-enum`
 
 Hint: If you use `wget` without pipe use `--content-disposition` to get the correct file name
 
@@ -41,7 +41,7 @@ require_once __DIR__ . "/%path%/libs/flux-legacy-enum/autoload.php";
                 "name": "flux/flux-legacy-enum",
                 "version": "%tag%",
                 "dist": {
-                    "url": "https://docker-registry.fluxpublisher.ch/api/get-build-archive/flux-enum/legacy.tar.gz?tag=%tag%",
+                    "url": "https://docker-registry.fluxpublisher.ch/api/get-build-archive/flux-legacy-enum.tar.gz?tag=%tag%",
                     "type": "tar"
                 },
                 "autoload": {

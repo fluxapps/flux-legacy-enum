@@ -10,7 +10,7 @@ fi
 if [ -n "$CI_REGISTRY" ] && [ -n "$CI_PROJECT_NAMESPACE" ]; then
     image="$CI_REGISTRY/$CI_PROJECT_NAMESPACE/flux-legacy-enum"
 else
-    image="docker-registry.fluxpublisher.ch/flux-enum/legacy"
+    image="docker-registry.fluxpublisher.ch/flux-legacy-enum"
 fi
 
 tag="$1"
