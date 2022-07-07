@@ -4,8 +4,6 @@ PHP 8.1 like legacy enum
 
 ## Installation
 
-Hint: Use `latest` as `%tag%` (or omit it) for get the latest build
-
 ### Non-Composer
 
 ```dockerfile
@@ -15,14 +13,12 @@ COPY --from=docker-registry.fluxpublisher.ch/flux-legacy-enum:%tag% /flux-legacy
 or
 
 ```dockerfile
-RUN (mkdir -p /%path%/libs/flux-legacy-enum && cd /%path%/libs/flux-legacy-enum && wget -O - https://docker-registry.fluxpublisher.ch/api/get-build-archive/flux-legacy-enum.tar.gz?tag=%tag% | tar -xz --strip-components=1)
+RUN (mkdir -p /%path%/libs/flux-legacy-enum && cd /%path%/libs/flux-legacy-enum && wget -O - https://github.com/flux-eco/flux-legacy-enum/releases/download/%tag%/flux-legacy-enum-%tag%-build.tar.gz | tar -xz --strip-components=1)
 ```
 
 or
 
-Download https://docker-registry.fluxpublisher.ch/api/get-build-archive/flux-legacy-enum.tar.gz?tag=%tag% and extract it to `/%path%/libs/flux-legacy-enum`
-
-Hint: If you use `wget` without pipe use `--content-disposition` to get the correct file name
+Download https://github.com/flux-eco/flux-legacy-enum/releases/download/%tag%/flux-legacy-enum-%tag%-build.tar.gz and extract it to `/%path%/libs/flux-legacy-enum`
 
 #### Usage
 
@@ -41,7 +37,7 @@ require_once __DIR__ . "/%path%/libs/flux-legacy-enum/autoload.php";
                 "name": "flux/flux-legacy-enum",
                 "version": "%tag%",
                 "dist": {
-                    "url": "https://docker-registry.fluxpublisher.ch/api/get-build-archive/flux-legacy-enum.tar.gz?tag=%tag%",
+                    "url": "https://github.com/flux-eco/flux-legacy-enum/releases/download/%tag%/flux-legacy-enum-%tag%-build.tar.gz",
                     "type": "tar"
                 },
                 "autoload": {
