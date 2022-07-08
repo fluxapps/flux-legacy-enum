@@ -7,12 +7,6 @@ PHP 8.1 like legacy enum
 ### Non-Composer
 
 ```dockerfile
-COPY --from=docker-registry.fluxpublisher.ch/flux-legacy-enum:%tag% /flux-legacy-enum /%path%/libs/flux-legacy-enum
-```
-
-or
-
-```dockerfile
 RUN (mkdir -p /%path%/libs/flux-legacy-enum && cd /%path%/libs/flux-legacy-enum && wget -O - https://github.com/flux-eco/flux-legacy-enum/releases/download/%tag%/flux-legacy-enum-%tag%-build.tar.gz | tar -xz --strip-components=1)
 ```
 
