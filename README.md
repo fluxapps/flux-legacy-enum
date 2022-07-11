@@ -4,7 +4,9 @@ PHP 8.1 like legacy enum
 
 ## Installation
 
-### Non-Composer
+### Native
+
+#### Download
 
 ```dockerfile
 RUN (mkdir -p /%path%/libs/flux-legacy-enum && cd /%path%/libs/flux-legacy-enum && wget -O - https://github.com/flux-eco/flux-legacy-enum/releases/download/%tag%/flux-legacy-enum-%tag%-build.tar.gz | tar -xz --strip-components=1)
@@ -14,7 +16,7 @@ or
 
 Download https://github.com/flux-eco/flux-legacy-enum/releases/download/%tag%/flux-legacy-enum-%tag%-build.tar.gz and extract it to `/%path%/libs/flux-legacy-enum`
 
-#### Usage
+#### Load
 
 ```php
 require_once __DIR__ . "/%path%/libs/flux-legacy-enum/autoload.php";
