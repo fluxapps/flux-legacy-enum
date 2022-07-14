@@ -9,12 +9,12 @@ PHP 8.1 like legacy enum
 #### Download
 
 ```dockerfile
-RUN (mkdir -p /%path%/libs/flux-legacy-enum && cd /%path%/libs/flux-legacy-enum && wget -O - https://github.com/flux-eco/flux-legacy-enum/releases/download/%tag%/flux-legacy-enum-%tag%-build.tar.gz | tar -xz --strip-components=1)
+RUN (mkdir -p /%path%/libs/flux-legacy-enum && cd /%path%/libs/flux-legacy-enum && wget -O - https://github.com/fluxfw/flux-legacy-enum/releases/download/%tag%/flux-legacy-enum-%tag%-build.tar.gz | tar -xz --strip-components=1)
 ```
 
 or
 
-Download https://github.com/flux-eco/flux-legacy-enum/releases/download/%tag%/flux-legacy-enum-%tag%-build.tar.gz and extract it to `/%path%/libs/flux-legacy-enum`
+Download https://github.com/fluxfw/flux-legacy-enum/releases/download/%tag%/flux-legacy-enum-%tag%-build.tar.gz and extract it to `/%path%/libs/flux-legacy-enum`
 
 #### Load
 
@@ -33,7 +33,7 @@ require_once __DIR__ . "/%path%/libs/flux-legacy-enum/autoload.php";
                 "name": "flux/flux-legacy-enum",
                 "version": "%tag%",
                 "dist": {
-                    "url": "https://github.com/flux-eco/flux-legacy-enum/releases/download/%tag%/flux-legacy-enum-%tag%-build.tar.gz",
+                    "url": "https://github.com/fluxfw/flux-legacy-enum/releases/download/%tag%/flux-legacy-enum-%tag%-build.tar.gz",
                     "type": "tar"
                 },
                 "autoload": {
